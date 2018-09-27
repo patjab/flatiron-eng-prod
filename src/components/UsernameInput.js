@@ -19,7 +19,10 @@ class UsernameInput extends Component {
 
   render() {
     return (
-      <input type='text' onChange={this.handleNameTyping} value={this.props.username}/>
+      <div>
+        Enter a username<br/>
+        <input type='text' onChange={this.handleNameTyping} value={this.props.username}/>
+      </div>
     )
   }
 }
