@@ -7,7 +7,7 @@ class Results extends Component {
   state = {
     currentUser: 'No Inquiry'
   }
-  
+
   componentDidUpdate() {
     fetch(`https://api.github.com/users/${this.props.username}`)
     .then(r => r.json())
@@ -37,7 +37,7 @@ class Results extends Component {
     const currentUser = this.state.currentUser
 
     return (
-      <Card>
+      <Card className='centered'>
         <Image src={currentUser.avatar_url} />
         <Card.Content>
           <Card.Header>
@@ -47,12 +47,10 @@ class Results extends Component {
           </Card.Header>
           <Card.Meta>
             <span className='email'>
-              <ul>
-                { currentUser.email ? <li>Email: {currentUser.email}</li> : null }
-                { currentUser.company ? <li>Company: {currentUser.company}</li> : null }
-                { currentUser.public_repos ? <li>Public Repos: {currentUser.public_repos}</li> : null }
-              </ul>
-            </span>
+              { currentUser.email ? <p>Email: {currentUser.email}</p> : null }
+              { currentUser.company ? <p>Company: {currentUser.company}</p> : null }
+              { currentUser.public_repos ? <p>Public Repos: {currentUser.public_repos}</p> : null }
+             </span>
           </Card.Meta>
           <Card.Description>{currentUser.bio}</Card.Description>
         </Card.Content>
