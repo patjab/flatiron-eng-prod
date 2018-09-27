@@ -69,10 +69,10 @@ class Results extends Component {
           this.state.currentUser === 'No Inquiry' ?
             'Please type a username to begin'
           :
-            this.state.currentUser === 'Not Found' ?
-              'No user with the name exists'
-              :
+            this.state.currentUser !== 'Not Found' ?
               this.renderCard()
+              :
+              'No user with the name exists'
         }
       </div>
     )

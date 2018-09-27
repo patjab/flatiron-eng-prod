@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { setUsername } from '../actions'
+import { setUsername, changeErrorMessage } from '../actions'
 
 class UsernameInput extends Component {
   // From https://github.com/join?source=experiment-header-dropdowns-home:
@@ -10,7 +10,10 @@ class UsernameInput extends Component {
     const regex = /^[A-Za-z0-9](?!.*--)([A-Za-z0-9-]*)$/
     const username = e.target.value
     if ( regex.test(username) || username === '' ) {
+      this.props.changeErrorMessage(null)
       this.props.setUsername(username)
+    } else {
+      this.props.changeErrorMessage('Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen')
     }
   }
 
@@ -29,7 +32,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setUsername: (username) => dispatch(setUsername(username))
+    setUsername: (username) => dispatch(setUsername(username)),
+    changeErrorMessage: (message) => dispatch(changeErrorMessage(message))
   }
 }
 

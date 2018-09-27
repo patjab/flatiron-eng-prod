@@ -1,5 +1,6 @@
 const initialState = {
-  username: ''
+  username: '',
+  errorMessage: null
 }
 
 const reducer = (state = initialState, action) => {
@@ -8,6 +9,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         username: action.payload
+      }
+    case "CHANGE_ERROR_MESSAGE":
+      return {
+        ...state,
+        errorMessage: action.payload
       }
     default:
       return state
